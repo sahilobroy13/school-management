@@ -1,13 +1,14 @@
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
+const { pool } = require("pg");
 dotenv.config();
 
 
-const connection = mysql.createConnection({
-    host : process.env.DB_HOST,
-    user : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
-    database : process.env.DB_NAME,
+const connection = new pool({
+    host : process.env.Hostname,
+    user : process.env.Username,
+    password : process.env.Password,
+    database : process.env.Database,
     connectionLimit: 10,
     waitForConnections: true,
     queueLimit: 0
