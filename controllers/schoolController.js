@@ -1,14 +1,14 @@
 const db = require("../config/db");
 
 exports.addSchool = (req,res)=>{
-    const {name, adress, latitude, longitude} = req.body;
+    const {name, address, latitude, longitude} = req.body;
     
-    if(!name || !adress || !latitude || !longitude){
+    if(!name || !address || !latitude || !longitude){
         return res.status(400).json({message : "All fields are required !"});
     }
 
-    const sql = "INSERT INTO schools (name, adress, latitude, longitude) VALUES ($1, $2, $3, $4)";
-    db.query(sql,[name,adress,latitude,longitude],(err,result)=>{
+    const sql = "INSERT INTO schools (name, address, latitude, longitude) VALUES ($1, $2, $3, $4)";
+    db.query(sql,[name,address,latitude,longitude],(err,result)=>{
         if(err){
             return res.status(400).json({message: "Database Eroor !", err});
         }
